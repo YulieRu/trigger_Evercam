@@ -60,8 +60,8 @@ void record(int *Array){
   for (int i=0; i < Array[0]; i++){
     Serial.print(i);
     digitalWrite(MOS_PIN1, HIGH);
-    digitalWrite(MOS_PIN1, LOW);
     delay(Array[1]);
+    digitalWrite(MOS_PIN1, LOW);
   }
 }
 
