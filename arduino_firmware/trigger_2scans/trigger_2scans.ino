@@ -5,7 +5,7 @@
 #define MOS_PIN1 3
 unsigned long timing=0;
 
-int intData[PARSE_AMOUNT];     // массив численных значений после парсинга
+double commandsData[PARSE_AMOUNT];     // массив численных значений после парсинга
 boolean recievedFlag;
 boolean getStarted;
 byte index;
@@ -32,7 +32,7 @@ void parsing() {
       if (incomingByte != ' ' && incomingByte != end_com) {   // если это не пробел И не конец
         string_convert += incomingByte;       // складываем в строку
       } else {                                // если это пробел или ; конец пакета
-        intData[index] = string_convert.toInt();  // преобразуем строку в int и кладём в массив
+        commandsData[index] = string_convert.toDouble();  // преобразуем строку в int и кладём в массив
         string_convert = "";                  // очищаем строку
         index++;                              // переходим к парсингу следующего элемента массива
       }
@@ -73,12 +73,13 @@ void loop() {
     recievedFlag = false;
   
   if (commandName.equalsIgnoreCase("RECORD")){
-    Serial.println("RECORD");
-    //record(intData);
-    for (int i=0; i < intData[0]; i++){
-      Serial.print(i);
+    //Serial.println("RECORD");
+    //record(commandsData);
+    commandsData[1] *= 1000;
+    for (int i=0; i < commandsData[0]; i++){
+      //Serial.print(i);
       digitalWrite(MOS_PIN1, HIGH);
-      delay(intData[1]);
+      delayMicroseconds(commandsData[1]);
       digitalWrite(MOS_PIN1, LOW);
     }
   } else {
