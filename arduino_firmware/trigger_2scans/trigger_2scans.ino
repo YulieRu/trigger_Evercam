@@ -75,12 +75,13 @@ void loop() {
   if (commandName.equalsIgnoreCase("RECORD")){
     //Serial.println("RECORD");
     //record(commandsData);
-    commandsData[1] *= 1000;
+    //commandsData[1] *= 1000;
     for (int i=0; i < commandsData[0]; i++){
-      //Serial.print(i);
+      //Serial.print(i); //
       digitalWrite(MOS_PIN1, HIGH);
-      delayMicroseconds(commandsData[1]);
+      delay(commandsData[1]);
       digitalWrite(MOS_PIN1, LOW);
+      //delay(commandsData[1]); //
     }
   } else {
     Serial.println("No such command. Try RECORD");
