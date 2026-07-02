@@ -19,7 +19,7 @@ def send_command():
         lblOpenPrt["text"] = f'Not connected'
         return 0
     serialTrigger.write(command.encode())
-    sleep(int(pause_ms) // 1000)
+    sleep(int(num_iter)*int(pause_ms) // 1000)
     #pyautogui.press("Enter")
     lbl["text"] = "Command was sent."
 
