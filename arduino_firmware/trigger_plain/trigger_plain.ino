@@ -62,6 +62,7 @@ void record(int *Array){
     digitalWrite(MOS_PIN1, HIGH);
     delay(Array[1]);
     digitalWrite(MOS_PIN1, LOW);
+    //delay(Array[1]);
   }
 }
 
